@@ -9,7 +9,7 @@ s3bucket=valegreo-acebook-bucket
 
 # Set permissions
 sudo chown -R ec2-user:ec2-user $repodir
-sudo chmod 755 $repodir/Scripts/*.sh
+sudo chmod 755 $repodir/codedeploy-scripts/*.sh
 
 # Copy files into place
 [ -d $webdir ] && rm -frv ${webdir}/*
