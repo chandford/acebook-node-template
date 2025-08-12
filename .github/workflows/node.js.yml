@@ -11,13 +11,14 @@ on:
 
 env:
   reponame: acebook-node-template
-  applicationname: acebook-app
+  applicationname: valegro-acebook
   deploymentgroup: valegro-production
   s3bucket: valegreo-acebook-bucket
 
 
 jobs:
-  build:
+  build_and_test:
+    name: Build and test
     runs-on: ubuntu-latest
     
     steps:
