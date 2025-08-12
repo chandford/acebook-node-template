@@ -6,14 +6,14 @@ files:
 file_exists_behavior: OVERWRITE
 hooks:
   ApplicationStop:
-    - location: codedeploy-scripts/application-stop.sh
+    - location: Scripts/application-stop.sh
       timeout: 300
       runas: ec2-user
   AfterInstall:
-    - location: codedeploy-scripts/after-install.sh
+    - location: Scripts/after-install.sh
       timeout: 300
       runas: ec2-user
   ApplicationStart:
-    - location: codedeploy-scripts/application-start.sh
+    - location: Scripts/application-start.sh
       timeout: 300
       runas: ec2-user
