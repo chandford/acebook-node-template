@@ -1,10 +1,21 @@
 #!/bin/bash
+set -e
 
-# Set variables
-reponame=acebook-node-template
-repodir=/home/ec2-user/${reponame}
+cd /home/ec2-user/valegro-acebook
 
+# Source NVM and use Node 23
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 23
 
-# Start application
-cd $repodir
+# Install npm dependencies
+npm install
+
+# Stop any existing Node.js processes
+pkill -f "node" || true
+
+# Start the application
 npm start &
+
+# Give the server a moment to start
+sleep 5
