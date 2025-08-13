@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set variables
-reponame=acebook-node-template
-repodir=/home/ec2-user/${reponame}
+# reponame=valegro-acebook
 webdir=/srv/www/valegro-acebook
 codedeployname=valegro-acebook
+repodir=/home/ec2-user/${codedeployname}
 s3bucket=valegreo-acebook-bucket
 
 # Set permissions
