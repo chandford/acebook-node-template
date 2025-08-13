@@ -68,7 +68,7 @@ jobs:
           cache: 'npm'
 
       - name: Upload to S3
-        working-directory: .
+        working-directory: ./archive
         run: aws s3 sync ./ s3://${{ env.s3bucket }}/${{ env.applicationname }}/ --delete
 
       - name: Run CodeDeploy deployment
