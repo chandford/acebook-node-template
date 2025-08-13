@@ -73,5 +73,6 @@ jobs:
 
       - name: Run CodeDeploy deployment
         run: |
-          aws deploy create-deployment --application-name ${{ env.applicationname }} --deployment-group-name ${{ env.deploymentgroup }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location s3://valegreo-acebook-bucket/valegro-acebook/
+          aws deploy create-deployment --application-name ${{ env.applicationname }} --deployment-group-name ${{ env.deploymentgroup }} --deployment-config-name CodeDeployDefault.OneAtATime 
+          --s3-location "bucket=valegreo-acebook-bucket/valegro-acebook/,key=valegro-acebook, bundleType=zip"
           
