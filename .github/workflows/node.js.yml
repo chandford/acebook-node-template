@@ -62,7 +62,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: bundle app
-        run:
+        run: |
           mkdir -p bundle 
           zip -qr  bundle/revision.zip . -x ".git/*"".github/*" "node_modules/*"
         
