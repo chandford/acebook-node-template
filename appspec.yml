@@ -4,7 +4,8 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/valegro-acebook
-file_exists_behavior: OVERWRITE
+    file_exists_behavior: OVERWRITE
+
 hooks:
   ApplicationStop:
     - location: codedeploy-scripts/application-stop.sh
