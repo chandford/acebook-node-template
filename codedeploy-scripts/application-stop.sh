@@ -5,4 +5,4 @@ reponame=valegro-acebook
 pm2_proc=$reponame
 
 # Stop application
-npm stop
+# npm stop
