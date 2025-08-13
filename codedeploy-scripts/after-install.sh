@@ -13,4 +13,4 @@ sudo chmod 755 $repodir/codedeploy-scripts/*.sh
 
 # Copy files into place
 [ -d $webdir ] && sudo rm -frv ${webdir}/*
-aws s3 sync s3://${s3bucket}/${codedeployname}/$ ${webdir}/ --delete
+sudo aws s3 sync s3://${s3bucket}/${codedeployname}/$ ${webdir}/ --delete
