@@ -15,7 +15,6 @@ env:
   deploymentgroup: valegro-production
   s3bucket: valegreo-acebook-bucket
 
-
 jobs:
   build_and_test:
     name: Build and test
