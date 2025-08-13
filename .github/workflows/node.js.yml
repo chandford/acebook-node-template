@@ -61,17 +61,24 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: 'npm'
-
+      - name: bundle app
+        run:
+          mkdir -p bundle 
+          zip -qr  bundle/revision.zip . -x ".git/*"".github/*" "node_modules/*"
+        
       - name: Upload to S3
-        working-directory: ./archive
-        run: aws s3 sync ./ s3://${{ env.s3bucket }}/${{ env.applicationname }}/ --delete
+        run: aws s3 cp bundle/revision.zip s3://${{ env.s3bucket }}/revisions/${{ github.sha }}.zip
 
-      - name: Run CodeDeploy deployment
+      - name: Register application revision
         run: |
-          aws deploy create-deployment --application-name ${{ env.applicationname }} --deployment-group-name ${{ env.deploymentgroup }} --deployment-config-name CodeDeployDefault.OneAtATime --s3-location "bucket=valegreo-acebook-bucket,key=Archive.zip, bundleType=zip"
+          aws deploy register-application-revision \
+            --application-name "${{ env.applicationname }}" \
+            --s3-location bucket=${{ env.s3bucket }},bundleType=zip,key=revisions/${{ github.sha }}.zip
+
+      - name: Create deployment
+        run: |
+          aws deploy create-deployment \
+            --application-name "${{ env.applicationname }}" \
+            --deployment-group-name "${{ env.deploymentgroup }}" \
+            --s3-location bucket=${{ env.s3bucket }},bundleType=zip,key=revisions/${{ github.sha }}.zip
           

@@ -12,5 +12,5 @@ sudo chown -R ec2-user:ec2-user $repodir
 sudo chmod 755 $repodir/codedeploy-scripts/*.sh
 
 # Copy files into place
-[ -d $webdir ] && sudo rm -frv ${webdir}/*
-sudo aws s3 sync s3://${s3bucket}/${codedeployname}/$ ${webdir}/ --delete
+#[ -d $webdir ] && sudo rm -frv ${webdir}/*
+#sudo aws s3 sync s3://${s3bucket}/${codedeployname}/$ ${webdir}/ --delete
