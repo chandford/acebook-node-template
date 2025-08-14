@@ -10,8 +10,8 @@ npm ci
 sudo pkill -f "node" || true
 
 # Start the application
-npm start & 
+npm start >/dev/null 2>&1 &  
 
 # Give the server a moment to start
-# echo "sleeping for 5 seconds"
-# sleep 5
+echo "sleeping for 5 seconds"
+sleep 5
