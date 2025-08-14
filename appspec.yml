@@ -23,3 +23,7 @@ hooks:
     - location: codedeploy-scripts/application-start.sh
       timeout: 30
       runas: ec2-user
+  Validate:
+    - location: codedeploy-scripts/validate-service.sh
+      timeout: 30
+      runas: ec2-user
