@@ -11,6 +11,4 @@ s3bucket=valegreo-acebook-bucket
 sudo chown -R ec2-user:ec2-user $repodir
 sudo chmod 755 $repodir/codedeploy-scripts/*.sh
 
-# Copy files into place
-#[ -d $webdir ] && sudo rm -frv ${webdir}/*
-#sudo aws s3 sync s3://${s3bucket}/${codedeployname}/$ ${webdir}/ --delete
+sudo socat TCP-LISTEN:80,fork TCP:127.0.0.1:3000

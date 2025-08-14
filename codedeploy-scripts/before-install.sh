@@ -24,3 +24,5 @@ fi
 # Start and enable MongoDB service
 systemctl start mongod
 systemctl enable mongod
+
+dnf -y install socat
